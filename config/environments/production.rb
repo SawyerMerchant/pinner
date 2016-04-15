@@ -90,4 +90,17 @@ Rails.application.configure do
       :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
     }
   }
+  
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address => "smtp.mailgun.org",
+    :port => 2525,
+    :domain => "mg.fasthopper.com",
+    :user_name => "postmaster@mg.fasthopper.com",
+    :password => "0ed63fc9af8229e932a95e6b594fc874",
+    :authentication => :plain,
+    :enable_starttls_auto => true,
+    :ssl => false
+  }
 end

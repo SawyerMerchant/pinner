@@ -14,7 +14,8 @@ Rails.application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
+  # config.action_mailer.perform_deliveries = true
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -40,5 +41,17 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
   
   #Required for Heroku
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_url_options = { :host => 'https://one-month-sawyermerchant.c9users.io', port: '8080' }
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address => "smtp.mailgun.org",
+    :port => 2525,
+    :domain => "mg.fasthopper.com",
+    :user_name => "postmaster@mg.fasthopper.com",
+    :password => "0ed63fc9af8229e932a95e6b594fc874",
+    :authentication => :plain,
+    :enable_starttls_auto => true,
+    :ssl => false
+  }
 end
